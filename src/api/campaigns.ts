@@ -12,6 +12,9 @@ export const fetchGlobalInsights = async () => {
 
 export const fetchCampaignInsights = async (id: string) => {
   const res = await fetch(`${BASE_URL}/campaigns/${id}/insights`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch campaign insights');
+  }
   return res.json();
 };
 
